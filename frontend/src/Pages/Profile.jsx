@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { CarContext } from './CarContext';
+import { CarContext } from '../components/CarContext';
 
 function Profile() {
   const {carCount} = useContext(CarContext);

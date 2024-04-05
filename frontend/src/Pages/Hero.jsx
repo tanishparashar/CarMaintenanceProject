@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Login from './Login'; // Import the Login component
+import Login from '../components/Login'; // Import the Login component
 
 const Hero = () => {
   const [showLogin, setShowLogin] = useState(false);
@@ -47,9 +47,7 @@ const Hero = () => {
                   <button className="btn btn-primary font-semibold cursor-pointer ">View Cars</button>
                 </Link>
               )}
-              {!loggedIn && ( // Render the login button if not logged in
-                <button className="btn btn-primary font-semibold cursor-pointer " onClick={toggleLogin}>Login</button>
-              )}
+              
             </div>
           </div>
         </div>

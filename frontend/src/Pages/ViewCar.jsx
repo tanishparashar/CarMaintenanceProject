@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import Card from './Card';
-import AddCarModal from './AddCarModal';
-import { CarContext } from './CarContext';
+import Card from '../components/Card';
+import AddCarModal from '../components/AddCarModal';
+import { CarContext } from '../components/CarContext';
 
 
 
