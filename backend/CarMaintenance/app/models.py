@@ -3,10 +3,11 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
 
+
 class CustomUser(AbstractUser):
-    username = None
+    # username = None
     email = models.EmailField(unique=True)
-    # username = models.CharField(unique=True, max_length=16)
+    username = models.CharField(unique=True, max_length=16)
 
 
     is_staff = models.BooleanField(default=False)
@@ -34,6 +35,8 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = []
     # objects = UserManager()
 
+    def __str__(self):
+        return self.username or ''
     pass
 
 

@@ -6,6 +6,8 @@ urlpatterns = [
     # User URLs
     path('users/', user.UserListCreateAPIView.as_view(), name='user-list-create'),
     path('users/<int:pk>/', user.UserRetrieveUpdateDestroyAPIView.as_view(), name='user-retrieve-update-destroy'),
+    path('users/login/', user.LoginUserView.as_view(), name='user-login'),
+    path('users/logout/', user.LogoutView.as_view(), name='user-logout'),
 
     # Car URLs
     path('cars/', car.CarListCreateAPIView.as_view(), name='car-list-create'),

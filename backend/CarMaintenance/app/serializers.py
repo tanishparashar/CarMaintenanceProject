@@ -6,6 +6,10 @@ class CustomUserSerializer(serializers.ModelSerializer):
         model = CustomUser
         fields = '__all__'
 
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car

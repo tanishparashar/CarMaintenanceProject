@@ -6,6 +6,7 @@ import ViewCar from './Pages/ViewCar.jsx';
 import Settings from './Pages/Settings.jsx';
 import CarProvider from './components/CarContext.jsx';
 import Profile from './Pages/Profile.jsx';
+import Signup from './components/Signup.jsx';
 
 const router = createBrowserRouter(
   [
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
         { path: 'viewcar', element: <ViewCar /> },
         { path: 'settings', element: <Settings /> },
         { path: 'profile', element: <Profile /> },
+        { path: 'signup', element: <Signup /> },
       ],
     },
   ]
