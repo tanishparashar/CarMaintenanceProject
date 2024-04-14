@@ -11,12 +11,17 @@ function ViewCar() {
   const [showModal, setShowModal] = useState(false);
   const {incrementCarCount } = useContext(CarContext)
 
-  const handleAddCar = (carName, engineType) => {
+  const handleAddCar = (carName, carMake, carModal, carYear, engineType, fuelType, mileage) => {
     incrementCarCount();
     const newCar = {
       id: Math.random().toString(36).substring(7),
       carName,
-      engineType
+      carMake,
+      carModal,
+      carYear,
+      engineType,
+      fuelType,
+      mileage
     };
     setCars([...cars, newCar]);
   };

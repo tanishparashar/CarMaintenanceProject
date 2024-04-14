@@ -2,13 +2,13 @@ from django.contrib import admin
 from .models import CustomUser, Car, MaintenanceRecord, PredictiveMaintenance, Alert, Notification, CostEstimation, FuelEfficiency
 
 class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ['username', 'email', 'first_name', 'last_name', 'is_staff']
+    list_display = ['id', 'username', 'email', 'first_name', 'last_name', 'is_staff']
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
 
 class CarAdmin(admin.ModelAdmin):
-    list_display = ['owner', 'make', 'model', 'year']
+    list_display = ['id', 'owner', 'make', 'model', 'year', 'engine_type', 'fuel_type', 'mileage']
 
 admin.site.register(Car, CarAdmin)
 

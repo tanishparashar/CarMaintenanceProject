@@ -29,7 +29,7 @@ class LoginUserView(APIView):
                 user = CustomUser.objects.get(email=serializer.validated_data["email"])
                 if check_password(serializer.validated_data["password"], user.password):
                     token = Token.objects.get_or_create(user=user)
-                    return Response({"success": True, "token":token[0].key})
+                    return Response({"success": True, "userId": user.id,"token":token[0].key})
                 else:
                     return Response({"success": False, "message":"incorrect password"})
                     

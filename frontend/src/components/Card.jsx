@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function Card({ carName, engineType }) {
+function Card({ carName, carMake, carModal, carYear, engineType, fuelType, mileage }) {
   // State to store the card data
   const [cardData, setCardData] = useState({ carName: '', engineType: '' });
 
