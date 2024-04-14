@@ -43,9 +43,12 @@ class CustomUser(AbstractUser):
 
 class Car(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    make = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
-    year = models.PositiveIntegerField()
+    make = models.CharField(max_length=100, default="Toyota")
+    model = models.CharField(max_length=100, default="Camry")
+    year = models.PositiveIntegerField(default=2015)
+    engine_type = models.CharField(max_length=100, default="Petrol")
+    fuel_type = models.CharField(max_length=100, default="Gasoline")
+    mileage = models.PositiveIntegerField(default=6000)
 
 class MaintenanceRecord(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
