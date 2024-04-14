@@ -1,7 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import Card from '../components/Card';
 import AddCarModal from '../components/AddCarModal';
 import { CarContext } from '../components/CarContext';
+import axios from 'axios'; // Import axios
+
 
 
 
@@ -9,26 +11,41 @@ import { CarContext } from '../components/CarContext';
 function ViewCar() {
   const [cars, setCars] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const {incrementCarCount } = useContext(CarContext)
+  const {incrementCarCount, decrementCarCount, carCount } = useContext(CarContext)
 
-  const handleAddCar = (carName, carMake, carModal, carYear, engineType, fuelType, mileage) => {
-    incrementCarCount();
-    const newCar = {
-      id: Math.random().toString(36).substring(7),
-      carName,
-      carMake,
-      carModal,
-      carYear,
-      engineType,
-      fuelType,
-      mileage
+  useEffect(() => {
+    const getCars = async () => {
+      const token = localStorage.getItem('token'); // Get the token from local storage
+      const userId = localStorage.getItem('userId');
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/cars/usercarslist/',{
+          headers: {
+            'Authorization': `Token ${token}`
+          }
+        });
+        setCars(response.data);
+        console.log(response.data, "getlistData");
+      } catch (error) {
+        console.error(`Error fetching cars: ${error}`);
+      }
     };
-    setCars([...cars, newCar]);
+
+    getCars();
+  }, [carCount]);
+
+  const handleAddCar = () => {
+    incrementCarCount();
+  };
+
+  const handleDeleteCar = () => {
+    decrementCarCount();
   };
 
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
+
+  
 
   return (
     <>
@@ -40,7 +57,7 @@ function ViewCar() {
           )}
           <div className="grid grid-cols-3 gap-4">
             {cars.map(car => (
-              <Card key={car.id}  carName={car.carName} engineType={car.engineType} />
+              <Card deleteCar= {handleDeleteCar} key={car.id} carId={car.id} carMake={car.make} carModel={car.model} carYear={car.year} engineType={car.engine_type} fuelType={car.fuel_type} mileage={car.mileage} />
             ))}
           </div>
         </div>

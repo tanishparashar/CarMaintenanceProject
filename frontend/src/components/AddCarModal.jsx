@@ -50,24 +50,25 @@ function AddCarModal({ onSubmit, onClose }) {
     try {
       const token = localStorage.getItem('token'); // Get the token from local storage
       const userId = localStorage.getItem('userId');
-      console.log(data);
       data = {
         owner: userId,
-        carName: data.carName,
-        carModel: data.carModel,
-        carMake: data.carMake,
-        carYear: data.carYear,
-        engineType: data.engineType,
-        fuelType: data.fuelType,
+        // carName: data.carName,
+        make: data.carMake,
+        model: data.carModel,
+        year: data.carYear,
+        engine_type: data.engineType,
+        fuel_type: data.fuelType,
         mileage: data.mileage
       }
+      console.log(data, "data");
+
       const response = await axios.post('http://127.0.0.1:8000/api/cars/', data, 
       {
         headers: { Authorization: `Token ${token}` } // Create an Authorization header with the token
       }
       );
-      console.log(response);
-      onSubmit(data.carName, data.carMake, data.carModel, data.carYear, data.engineType, data.fuelType, data.mileage);
+      console.log(response, "response");
+      onSubmit();
       onClose(); // Close the modal after submitting
     } catch (error) {
       console.error(error);

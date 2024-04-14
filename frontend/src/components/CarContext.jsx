@@ -9,9 +9,12 @@ const CarProvider = ({ children }) => {
   const incrementCarCount = () => {
     setCarCount(prevCount => prevCount + 1);
   };
+  const decrementCarCount = () => {
+    setCarCount(prevCount => prevCount - 1);
+  };
 
   return (
-    <CarContext.Provider value={{ carCount, incrementCarCount }}>
+    <CarContext.Provider value={{ carCount, incrementCarCount, decrementCarCount }}>
       {children}
     </CarContext.Provider>
   );

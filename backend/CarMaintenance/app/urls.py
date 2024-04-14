@@ -12,6 +12,7 @@ urlpatterns = [
     # Car URLs
     path('cars/', car.CarListCreateAPIView.as_view(), name='car-list-create'),
     path('cars/<int:pk>/', car.CarRetrieveUpdateDestroyAPIView.as_view(), name='car-retrieve-update-destroy'),
+    path('cars/usercarslist/', car.UserCarsListAPIView.as_view(), name='car-user-list'),
 
     # # MaintenanceRecord URLs
     # path('maintenance/', maintenance.MaintenanceRecordListCreateAPIView.as_view(), name='maintenance-record-list-create'),
