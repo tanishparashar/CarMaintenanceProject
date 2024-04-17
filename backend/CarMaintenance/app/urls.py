@@ -1,6 +1,6 @@
 # carmaintenance/views/urls.py
 from django.urls import path
-from .views import user, car
+from .views import user, car, predicitve_maintenance
 
 urlpatterns = [
     # User URLs
@@ -14,13 +14,16 @@ urlpatterns = [
     path('cars/<int:pk>/', car.CarRetrieveUpdateDestroyAPIView.as_view(), name='car-retrieve-update-destroy'),
     path('cars/usercarslist/', car.UserCarsListAPIView.as_view(), name='car-user-list'),
 
+
+    # PredictiveMaintenance URLs
+    path('predictive/<int:pk>', predicitve_maintenance.PredictiveMaintenanceListCreateAPIView.as_view(), name='predictive-maintenance-list-create'),
+    path('predictive/<int:pk>/', predicitve_maintenance.PredictiveMaintenanceRetrieveUpdateDestroyAPIView.as_view(), name='predictive-maintenance-retrieve-update-destroy'),
+    path('predictive/carpredictivelist/<int:pk>/', predicitve_maintenance.CarPredictiveMaintenanceListAPIView.as_view(), name='predictive-car-list'),
+    # path('predictive/report/<int:pk>', predicitve_maintenance.PredictiveMaintenanceReportAPIView.as_view(), name='predictive-report'),
+
     # # MaintenanceRecord URLs
     # path('maintenance/', maintenance.MaintenanceRecordListCreateAPIView.as_view(), name='maintenance-record-list-create'),
     # path('maintenance/<int:pk>/', maintenance.MaintenanceRecordRetrieveUpdateDestroyAPIView.as_view(), name='maintenance-record-retrieve-update-destroy'),
-
-    # # PredictiveMaintenance URLs
-    # path('predictive/', predictive.PredictiveMaintenanceListCreateAPIView.as_view(), name='predictive-maintenance-list-create'),
-    # path('predictive/<int:pk>/', predictive.PredictiveMaintenanceRetrieveUpdateDestroyAPIView.as_view(), name='predictive-maintenance-retrieve-update-destroy'),
 
     # # Alert URLs
     # path('alerts/', alert.AlertListCreateAPIView.as_view(), name='alert-list-create'),

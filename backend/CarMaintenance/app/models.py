@@ -60,9 +60,13 @@ class MaintenanceRecord(models.Model):
         return f"{self.car} - {self.maintenance_type}"
 
 class PredictiveMaintenance(models.Model):
-    car = models.OneToOneField(Car, on_delete=models.CASCADE)
+    car = models.ForeignKey(Car, on_delete=models.CASCADE)
     next_maintenance_date = models.DateField()
-    prediction_accuracy = models.FloatField()
+    # prediction_accuracy = models.FloatField()
+    remaining_engine_life = models.PositiveIntegerField(default=1)
+    fuel_efficiency = models.FloatField(default=0)
+    component_wear_and_tear = models.FloatField(default=0)
+    maintenance_cost = models.FloatField(default=0)
     # Add more fields related to predictive maintenance
 
 class Alert(models.Model):

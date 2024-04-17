@@ -18,8 +18,8 @@ class MaintenanceRecordAdmin(admin.ModelAdmin):
 admin.site.register(MaintenanceRecord, MaintenanceRecordAdmin)
 
 class PredictiveMaintenanceAdmin(admin.ModelAdmin):
-    list_display = ['car', 'next_maintenance_date', 'prediction_accuracy']
-
+    list_display = ['car', 'next_maintenance_date', 'remaining_engine_life', 'fuel_efficiency', 'component_wear_and_tear', 'maintenance_cost']
+    
 admin.site.register(PredictiveMaintenance, PredictiveMaintenanceAdmin)
 
 class AlertAdmin(admin.ModelAdmin):
