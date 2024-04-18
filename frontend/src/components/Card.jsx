@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { saveAs } from 'file-saver';
 
+
 function Card({deleteCar, carId, carMake, carModel, carYear, engineType, fuelType, mileage }) {
+ 
   // State to store the card data
 
   const deleteCarCard = async () => {
@@ -19,6 +21,7 @@ function Card({deleteCar, carId, carMake, carModel, carYear, engineType, fuelTyp
       console.error(`Error deleting car: ${error}`);
     }
   };
+  
 
   const checkReport = async () => {
     const token = localStorage.getItem('token'); // Get the token from local storage
@@ -27,7 +30,9 @@ function Card({deleteCar, carId, carMake, carModel, carYear, engineType, fuelTyp
         headers: {
           'Authorization': `Token ${token}`
         },
+        
         responseType: 'blob', // to handle file download
+       
       });
   
       const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
@@ -40,6 +45,9 @@ function Card({deleteCar, carId, carMake, carModel, carYear, engineType, fuelTyp
   
       // Save the URL in the state to be used for the download button
       setPdfUrl(url);
+      //increment report count
+      updateReportCount(prevCount => prevCount + 1);
+
     } catch (error) {
       console.error(`Error checking report: ${error}`);
     }

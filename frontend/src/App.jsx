@@ -7,6 +7,7 @@ import Settings from './Pages/Settings.jsx';
 import CarProvider from './components/CarContext.jsx';
 import Profile from './Pages/Profile.jsx';
 import Signup from './components/Signup.jsx';
+import { ReportCountProvider } from './components/Reportcardcontext.jsx';
 
 const router = createBrowserRouter(
   [
@@ -27,7 +28,9 @@ const router = createBrowserRouter(
 function App() {
   return (
     <CarProvider>
+      
       <RouterProvider router={router} />
+      
     </CarProvider>
   );
 }
